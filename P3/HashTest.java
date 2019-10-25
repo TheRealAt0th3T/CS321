@@ -19,4 +19,25 @@ import java.util.Scanner;
  * 
  */
 
-
+public class HashTest{
+	private static double loadFactor;
+	public static void main (String[] args) {
+		loadFactor = Double.parseDouble(args[1]); //grabbing load factor from input
+		
+		if(args.length == 2 || Integer.parseInt(args[2]) == 0) {
+			if(Integer.parseInt(args[0]) ==1) {
+				//debug smth
+				//exit?
+			}else if(Integer.parseInt(args[0]==2)) {
+				//debug smth
+				//exit
+			}
+		}
+		
+		//if(args.length =)
+		
+//		PrimeGenerator p = new PrimeGenerator();
+//		System.out.println(p.TwinPrimes(95500, 96000));
+	}
+	
+}
