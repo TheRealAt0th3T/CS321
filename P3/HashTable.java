@@ -33,6 +33,30 @@ public class HashTable <T>{
 		return this.size;
 	}
 	
+	public int getLinearProbes() {
+		return linearProbeCount;
+	}
+	
+	public int getDoubleProbes() {
+		return doubleProbeCount;
+	}
+	
+	public int getDuplicateDouble() {
+		return duplicateDoubleCount();
+	}
+	
+	public int getDuplicateLinear() {
+		return duplicateLinearCount;
+	}
+	
+	public int  getLinearInput() {
+		return linearInput;
+	}
+	
+	public int getDoubleInput() {
+		return doubleInput;
+	}
+	
 	/*
 	 * HASH FUNCTIONS
 	 * based off equations
@@ -57,13 +81,15 @@ public class HashTable <T>{
 		while(i<this.size) {
 			itr++;
 			if(Table[index] != null && Table[index]==obj) { //COLLISION
-				
+				//-----------------------------------------------------
 				duplicateLinearCount++; //because found obj -> collision
 				return index; 
 			} else if( table[index] == null) { //INSERTS OBJ
 				Table[index] = obj;
+				linearInput++;
 				return index;
 			}
+			linearProbeCount++;
 		}
 	}
 	
@@ -74,18 +100,34 @@ public class HashTable <T>{
 		
 		while(Table[index]!= null) {
 			if(Table[index] == obj) { //found the obj already in that place
-				
+				duplicateDoubleCount++;
 				return; //breaks out once finds a duplicate
 			}else { //space filled so need to take a step
+				doubleProbeCount++;
 				index = index + step;
 				index = index % size;
 			}
 		}
 		if(Table[index] == null) {
 			table[index] = obj;
+			doubleInput++;
 		}
 	}
 	
 	
+	/*
+	 * AVG PROB CALCULATIONS
+	 */
+	public double avgProbesLinear() {
+		return (double) linearProbeCount/ linearInput;
+	}
+	
+	public double avgProbesDouble() {
+		return (double) doubleProbeCount / doubleInput;
+	}
+	
+	/*
+	 * OUTPUT METHODS
+	 */
 	
 }
