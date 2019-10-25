@@ -42,7 +42,7 @@ public class HashTable <T>{
 	}
 	
 	public int getDuplicateDouble() {
-		return duplicateDoubleCount();
+		return duplicateDoubleCount;
 	}
 	
 	public int getDuplicateLinear() {
@@ -76,26 +76,27 @@ public class HashTable <T>{
 	public int linearProbe(HashObject<T> obj) {
 		int itr = 0; //iterations
 		int objKey = obj.getKey();
-		int index = (linearHashFunction(key) + itr) % this.size;
+		int index = (linearHashFunction(objKey) + itr) % this.size;
 		linearProbeCount++; 
-		while(i<this.size) {
+		while(itr<this.size) {
 			itr++;
 			if(Table[index] != null && Table[index]==obj) { //COLLISION
 				//-----------------------------------------------------
 				duplicateLinearCount++; //because found obj -> collision
 				return index; 
-			} else if( table[index] == null) { //INSERTS OBJ
+			} else if( Table[index] == null) { //INSERTS OBJ
 				Table[index] = obj;
 				linearInput++;
 				return index;
 			}
 			linearProbeCount++;
 		}
+		return index;
 	}
 	
 	public void doubleHashing(HashObject<T> obj) {
 		int objKey = obj.getKey();
-		int index = key % this.size;
+		int index = objKey % this.size;
 		int step = doubleHashFunction(objKey);
 		
 		while(Table[index]!= null) {
@@ -109,7 +110,7 @@ public class HashTable <T>{
 			}
 		}
 		if(Table[index] == null) {
-			table[index] = obj;
+			Table[index] = obj;
 			doubleInput++;
 		}
 	}
