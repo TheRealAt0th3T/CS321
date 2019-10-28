@@ -5,6 +5,12 @@
  * PROJECT 3 - HASHTABLES
  * 
  * HashTable.java
+ * linear and double hashing
+ * 
+ * questions:
+ * 
+ * put double and linear hashing here 
+ * ---should double hashing be on a separate file?
  * 
  */
 
@@ -17,13 +23,14 @@ public class HashTable <T>{
 	
 	private int linearProbeCount, doubleProbeCount;
 	private int linearInput, doubleInput;
-	private int duplicateLinearCount, duplicateDoubleCount;
+	private int duplicateLinearCount, duplicateDoubleCount; //hashReq???
+	static PrimeGenerator prime = new PrimeGenerator();
 	
 	public HashTable(int load, int debug) {
 		load = this.loadFactor;
 		debug = this.debugLevel;
-		//size = ; // --------------based off the primeGeneraator
-		Table = new HashObject[size];
+		size = prime.TwinPrimes(95500,96000);
+		Table = new HashObject[size]; //???????
 	}
 	
 	/*
@@ -55,6 +62,10 @@ public class HashTable <T>{
 	
 	public int getDoubleInput() {
 		return doubleInput;
+	}
+	
+	public double getLoad() {
+		return (double) linearInput/size;
 	}
 	
 	/*
@@ -126,9 +137,5 @@ public class HashTable <T>{
 	public double avgProbesDouble() {
 		return (double) doubleProbeCount / doubleInput;
 	}
-	
-	/*
-	 * OUTPUT METHODS
-	 */
 	
 }
