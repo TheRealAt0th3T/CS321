@@ -20,7 +20,7 @@ public class HashObject <T>{
 	public HashObject(T object) {
 		
 		this.key = rand.nextInt(); //---------------------------
-		this.timeKey = 0;
+		this.timeKey = 0; 
 		this.hashObj = object;
 		
 	}
@@ -45,7 +45,22 @@ public class HashObject <T>{
 	}
 	
 	/*
-	 * 
+	 * INCREASE METHODS 
 	 */
+	
+	public void increaseTimeKey() {
+		this.timeKey++;
+	}
+	
+	/*
+	 * ISEQUAL METHODS
+	 */
+	public boolean isEqual(HashObject<T> obj) {
+		if(obj.getObject().equals(hashObj)) {
+			return true;
+		}else {
+			return false;
+		}
+	}
 	
 }
