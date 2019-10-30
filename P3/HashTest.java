@@ -18,6 +18,8 @@ import java.util.Scanner;
  * 
  */
 
+// added comment 
+
 public class HashTest {
 	private static double loadFactor;
 
