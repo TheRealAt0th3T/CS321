@@ -13,7 +13,7 @@ public class HashObject <T>{
 	
 	private T hashObj;
 	private int key; //data source 1
-	private int timeKey; //data source 2
+	private int timeKey; //data source 2 //call to systen.currentTimeMillis() ??
 	private int wordKey; //data source 3
 	Random rand = new Random();
 	
@@ -21,7 +21,7 @@ public class HashObject <T>{
 		
 		this.key = rand.nextInt(); //---------------------------
 		this.timeKey = 0; 
-		this.hashObj = object;
+		this.hashObj = object; //compute the hashCode??
 		
 	}
 	
@@ -40,7 +40,7 @@ public class HashObject <T>{
 		return this.wordKey;
 	}
 	
-	public T getObject() {
+	public String getObject() {
 		return this.hashObj;
 	}
 	
