@@ -6,7 +6,6 @@ end of program should be able to print all the numbers
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.Random;
 import java.util.Scanner;
 
 /*
@@ -27,7 +26,7 @@ public class HashTest {
 
 		if (args.length == 2 || Integer.parseInt(args[2]) == 0) {
 			if (Integer.parseInt(args[0]) == 1) { // INPUT TYPE 1
-				// wat
+				debugLevelZero();
 				// exit?
 			} else if (Integer.parseInt(args[0]) == 2) { //INPUT TYPE 2
 				// debug smth
@@ -62,16 +61,38 @@ public class HashTest {
 				}
 			}
 		}
+	}
+		public static void debugLevelZero() { //general output without table output -- DEBUG LEVEL 0
+			HashTable<String> Linear = new HashTable<String>(load, 0);
+			DoubleHash<String> Double = new DoubleHash<String>(load, 0);
+			
+			System.out.println("A good table size is found: " + Linear.getSize());
+			System.out.println("Data Source Type: word-list\n\n");
+			
+			System.out.println("Using Linear Hashing...\n");
+			while(linear.getLoad()<loadFactor) { //filling the hashtable
+				HashObject<String> input = new HashObject<String>();
+				Linear.linearProbe(input);
+				Double.doubleHashing(input);
+			}
+			
+			System.out.println("Input " + Linear.getLinearInput() + "elements, of which " + Linear.getDuplicatesLinear() + "duplicates" );
+			System.out.println("load factor = " + loadFactor + ", Avg. no. of probes " + Linear.avgProbesLinear() + "\n\n");\
+			
+			System.out.println("Using Double Hashing...\n");
+			System.out.println("Input " + Double.getDoubleInput() + "elements, of which " + Double.getDuplicatesDouble() + "duplicates" );
+			System.out.println("load factor = " + loadFactor + ", Avg. no. of probes " + Double.avgProbesDouble() + "\n\n");\
+			
+		}
 		
-		public static void debugLevelZero() {
-			HashTable<Integer> Linear = new HashTable<Integer>(load, 0);
-			DoubleHash<Integer> Double = new DoubleHash<Integer>(load, 0);
+		public static void debugLevelOne() { //output with hashtables -- DEBUG LEVEL 1
+			
 		}
 
 		// if(args.length =)
 
 //		PrimeGenerator p = new PrimeGenerator();
 //		System.out.println(p.TwinPrimes(95500, 96000));
-	}
+	
 
 }
